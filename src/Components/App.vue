@@ -2,39 +2,48 @@
 <div>
        <table align="center">
            <tr>
-               <td ><input type="text" v-model="weathercityAdd">
+               <td ><input type="text" v-model="weathercityAdd" >
                     <br>
-                    <button class="myButton" v-on:click="addWeatherCity">Add</button>
+                    <button class="myButton" style="min-width: 170px" v-on:click="addWeatherCity">Add</button>
                     </td>
-                     <td> 
-                    <select v-model="weathercity" style>
-                        <option  v-for="city in weathercities" v-bind:key="city" v-bind:value="city">{{city}}</option>
+                    <td> 
+                    <select v-on:click="getWeather" v-model="weathercity" >
+                        <option   v-for="city in weathercities" v-bind:key="city" v-bind:value="city">{{city}}</option>
                     </select>
-                    <br><button class="myButton" v-on:click="getWeather">Weather</button>
                 </td>
             </tr>
        </table>
-       <table v-if="weather.cod >0" cellspacing="40px" align="center"> 
+       <table v-if="weather.cod >0" cellspacing="30px" align="center"> 
             <tr>
                 <td>{{weathercity}}</td> 
+                <td></td>
                 <td>{{weather.sys.country}}</td> 
             </tr>   
 
             <tr>
                 <td>Sky</td> 
+                <td><img src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_39-512.png" width="40px"></td>
                 <td>{{weather.weather[0].description}}</td>
+               
+                 
             </tr>
             <tr>
                 <td>Temp</td>
+                <td><img src="https://cdn4.iconfinder.com/data/icons/the-weather-is-nice-today/64/weather_43-512.png" width="40px"></td>
                 <td>{{weather.main.temp-273.15 | roundValue}}°C</td>
+                
             </tr>
             <tr>
                 <td>Pressure</td>  
+                <td><img src="https://cdn2.iconfinder.com/data/icons/weather-honey-vol-1/64/BAROMETRIC_PRESSURE-256.png" width="40px"></td>
                 <td>{{weather.main.pressure}} P</td>
+                 
             </tr>
             <tr>
                 <td>Humidity</td> 
+                <td><img src="https://cdn4.iconfinder.com/data/icons/weather-717/64/humidity-rain-water-weather-256.png" width="40px"></td>
                 <td >{{weather.main.humidity}} г/м³</td>
+                 
             </tr>
        </table>
    </div>
